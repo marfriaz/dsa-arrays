@@ -87,6 +87,142 @@ console.log(mergeArrays([1, 3, 6, 8, 11], [2, 3, 5, 8, 9, 10]));
 //=== 9. Remove Characters ===//
 
 /*
-Write an algorithm that deletes given characters from a string. For example, given a string of "Battle of the Vowels: Hawaii vs. Grozny" and the characters to be removed are "aeiou", the algorithm should transform the original string to "Bttl f th Vwls: Hw vs. Grzny". Do not use Javascript's filter, split, or join methods.
+Write an algorithm that deletes given characters from a string. For example, 
+given a string of "Battle of the Vowels: Hawaii vs. Grozny" and the 
+characters to be removed are "aeiou", the algorithm should transform the 
+original string to "Bttl f th Vwls: Hw vs. Grzny". Do not use Javascript's 
+filter, split, or join methods.
 Input:'Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'
 Output: 'Bttl f th Vwls: Hw vs. Grzny' */
+const sentence = "Battle of the Vowels: Hawaii vs. Grozny";
+const vowels = ["a", "e", "i", "o", "u"];
+function removeChar(sentence, vowels) {
+  let newString = "";
+  for (let i = 0; i < sentence.length; i++) {
+    if (!vowels.includes(sentence[i])) {
+      newString += sentence[i];
+    }
+  }
+  return newString;
+}
+console.log(removeChar(sentence, vowels));
+
+// OR ALTERNATIVELY
+function removeChar(string, letters) {
+  const letterArr = [];
+  const stringArr = [];
+
+  for (let i = 0; i < letters.length; i++) {
+    letterArr.push(letters.charAt(i));
+  }
+  for (let i = 0; i < string.length; i++) {
+    stringArr.push(string.charAt(i));
+  }
+
+  letterArr.forEach((letter) => {
+    stringArr.forEach((strLtr, index) => {
+      if (letter === strLtr) {
+        stringArr.splice(index, 1);
+      }
+    });
+  });
+
+  const concatString = stringArr.reduce((acc, curr) => {
+    return acc + curr;
+  });
+
+  return concatString;
+}
+
+removeChar("Battle of the Vowels: Hawaii vs. Grozny", "aeiou");
+
+//=== 10. Products ===//
+
+/*
+Given an array of numbers, write an algorithm that outputs an 
+array where each index is the product of all the numbers in the 
+input array except for the number at each current index. See the 
+following example input and output.
+Input:[1, 3, 9, 4] 
+Output:[108, 36, 12, 27] */
+
+function products(arr) {
+  let newArr = [];
+  let value = 1;
+
+  for (let i = 0; i < arr.length; i++) {
+    value = value * arr[i];
+    // newArr.push(value / arr[i]);
+  }
+
+  for (let j = 0; j < arr.length; j++) {
+    newArr.push(value / arr[j]);
+  }
+  return newArr;
+}
+
+products([1, 3, 9, 4]);
+
+//=== 11. 2D array ===//
+
+/*
+Write an algorithm which searches through a 2D array, and whenever it finds a 0 should set the entire row and column to 0.
+Input: 
+[[1,0,1,1,0],
+[0,1,1,1,0],
+[1,1,1,1,1],
+[1,0,1,1,1],
+[1,1,1,1,1]];
+Output:
+[[0,0,0,0,0],
+[0,0,0,0,0],
+[0,0,1,1,0],
+[0,0,0,0,0],
+[0,0,1,1,0]]; */
+
+let twoD = [
+  [1, 0, 1, 1, 0],
+  [0, 1, 1, 1, 0],
+  [1, 1, 1, 1, 1],
+  [1, 0, 1, 1, 1],
+  [1, 1, 1, 1, 1],
+];
+
+function twoDArray(arr) {
+  const oneArray = [];
+  const twoArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    let row = arr[i];
+    for (let j = 0; j < row.length; j++) {
+      const item = row[j];
+      if (item === 0) {
+        oneArray[i] = true;
+        twoArray[j] = true;
+      }
+    }
+  }
+  for (let i = 0; i < arr.length; i++) {
+    let row = arr[i];
+    for (let j = 0; j < row.length; j++) {
+      if (oneArray[i] || twoArray[j]) {
+        row[j] = 0;
+      }
+    }
+  }
+  return arr;
+}
+console.log(twoDArray(twoD));
+
+//=== 12. String rotation ===//
+
+/*
+Given 2 strings, str1 and str2, write a program that checks if str2 is a rotation of str1.
+Input: amazon, azonma
+Output: False
+Input: amazon, azonam
+Output: true */
+
+function rotation(str1, str2) {
+  return (str1 + str1).includes(str2);
+}
+console.log(rotation("amazon", "azonma"));
