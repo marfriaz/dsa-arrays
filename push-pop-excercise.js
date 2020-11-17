@@ -38,6 +38,7 @@ function main() {
   arr.pop(); // length: 5, capacity: 12, ptr: 3
   arr.pop(); // length: 4, capacity: 12, ptr: 3
   arr.pop(); // length: 3, capacity: 12, ptr: 3
+
   console.log(arr);
   // three items were removed from the end of the array
   // resulting in new length of 3, but the capacity and ptr stays the

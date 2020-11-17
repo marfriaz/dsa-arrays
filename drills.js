@@ -108,31 +108,31 @@ function removeChar(sentence, vowels) {
 console.log(removeChar(sentence, vowels));
 
 // OR ALTERNATIVELY
-function removeChar(string, letters) {
-  const letterArr = [];
-  const stringArr = [];
+// function removeChar(string, letters) {
+//   const letterArr = [];
+//   const stringArr = [];
 
-  for (let i = 0; i < letters.length; i++) {
-    letterArr.push(letters.charAt(i));
-  }
-  for (let i = 0; i < string.length; i++) {
-    stringArr.push(string.charAt(i));
-  }
+//   for (let i = 0; i < letters.length; i++) {
+//     letterArr.push(letters.charAt(i));
+//   }
+//   for (let i = 0; i < string.length; i++) {
+//     stringArr.push(string.charAt(i));
+//   }
 
-  letterArr.forEach((letter) => {
-    stringArr.forEach((strLtr, index) => {
-      if (letter === strLtr) {
-        stringArr.splice(index, 1);
-      }
-    });
-  });
+//   letterArr.forEach((letter) => {
+//     stringArr.forEach((strLtr, index) => {
+//       if (letter === strLtr) {
+//         stringArr.splice(index, 1);
+//       }
+//     });
+//   });
 
-  const concatString = stringArr.reduce((acc, curr) => {
-    return acc + curr;
-  });
+//   const concatString = stringArr.reduce((acc, curr) => {
+//     return acc + curr;
+//   });
 
-  return concatString;
-}
+//   return concatString;
+// }
 
 removeChar("Battle of the Vowels: Hawaii vs. Grozny", "aeiou");
 
@@ -161,7 +161,7 @@ function products(arr) {
   return newArr;
 }
 
-products([1, 3, 9, 4]);
+console.log(products([1, 3, 9, 4]));
 
 //=== 11. 2D array ===//
 
